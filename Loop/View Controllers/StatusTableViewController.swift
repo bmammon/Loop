@@ -255,7 +255,7 @@ final class StatusTableViewController: ChartsTableViewController {
 
         let totalHours = floor(Double(availableWidth / settings.minimumChartWidthPerHour))
         let futureHours = ceil((deviceManager.loopManager.insulinModelSettings?.model.effectDuration ?? .hours(4)).hours)
-        let historyHours = max(settings.statusChartMinimumHistoryDisplay.hours, totalHours - futureHours)
+        let historyHours = max(settings.statusChartMinimumHistoryDisplay.hours, (totalHours * 1.65) - futureHours)
 
         let date = Date(timeIntervalSinceNow: -TimeInterval(hours: historyHours))
         let chartStartDate = Calendar.current.nextDate(after: date, matching: DateComponents(minute: 0), matchingPolicy: .strict, direction: .backward) ?? date
